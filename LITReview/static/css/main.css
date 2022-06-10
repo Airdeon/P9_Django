@@ -1,0 +1,123 @@
+.top_bar {
+  background-color: #4b4b4b;
+  height: 50px;
+  line-height: 50px;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  top: 0px;
+  margin: 0;
+  background-color: #313131;
+  color: #d4d4d4;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+}
+
+.login_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+
+.registration {
+  min-width: 300px;
+}
+
+.login_form {
+  min-width: 300px;
+}
+
+.form {
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.form label {
+  position: absolute;
+  margin-top: -72px;
+  margin-left: 5px;
+  display: block;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.form input[type="text"],
+.form input[type="date"],
+.form input[type="datetime"],
+.form input[type="email"],
+.form input[type="search"],
+.form input[type="time"],
+.form input[type="url"],
+.form input[type="password"],
+.form input[type="number"],
+.form textarea,
+.form select {
+  background: #4b4b4b;
+  border: none;
+  border-radius: 0.3em;
+  font-size: 1.2em;
+  outline: 0;
+  min-width: 0;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px;
+  height: 52px;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #d3d3d3;
+}
+
+.form input[type="text"]:focus,
+.form input[type="date"]:focus,
+.form input[type="datetime"]:focus,
+.form input[type="email"]:focus,
+.form input[type="search"]:focus,
+.form input[type="time"]:focus,
+.form input[type="url"]:focus,
+.form input[type="password"]:focus,
+.form input[type="number"]:focus,
+.form textarea:focus,
+.form select:focus {
+  background: #4b4b4b;
+}
+
+.form input[type="text"]:focus + label,
+.form input[type="date"]:focus + label,
+.form input[type="datetime"]:focus + label,
+.form input[type="email"]:focus + label,
+.form input[type="search"]:focus + label,
+.form input[type="time"]:focus + label,
+.form input[type="url"]:focus + label,
+.form input[type="password"]:focus + label,
+.form input[type="number"]:focus + label,
+.form textarea:focus + label,
+.form select:focus + label {
+  -webkit-transform: translateX(15px) scale(1.1);
+  transform: translateX(15px) scale(1.1);
+  color: #ee5b30;
+}
+/*# sourceMappingURL=main.css.map */

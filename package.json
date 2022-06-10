@@ -1,0 +1,19 @@
+{
+  "name": "sources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:LITReview/static/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Airdeon/P9_Django.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Airdeon/P9_Django/issues"
+  },
+  "homepage": "https://github.com/Airdeon/P9_Django#readme"
+}

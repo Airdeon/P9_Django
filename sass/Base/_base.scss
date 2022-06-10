@@ -1,0 +1,23 @@
+.top_bar{
+    background-color: $background_color_second;
+    height: 50px;
+    line-height: 50px;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    top: 0px;
+    margin: 0;
+    background-color: $background_color_main;
+    color: $text_color;
+}
+
+h1{
+    margin:0;
+    text-align: center;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+}

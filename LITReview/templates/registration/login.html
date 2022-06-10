@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <div class="top_bar">
+        <h1>LITReview</h1>
+    </div>
+    <div class="login_content">
+        <div class="registration">
+            <h3>Inscrivez-vous maintenant</h3>
+            <div class="row center"><a class="button" href="{% url 'password_reset' %}">S'inscrire</a></div>
+        </div>
+        <div class="login_form">
+            <h3>Connexion</h3>
+
+            <form class="form" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div>
+                        {{ form.username }}{{ form.username.label_tag }}
+                    </div>
+                    <div>
+                        {{ form.password }}{{ form.password.label_tag }}
+                    </div>
+                </div>
+                <div class="row center"><button class="button" type="submit">connexion</button></div>
+            </form>
+            <div class="row center"><a class="button" href="{% url 'password_reset' %}">mot de passe oublié ?</a></div>
+        </div>
+    </div>
+</body>
