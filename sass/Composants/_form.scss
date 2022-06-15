@@ -1,6 +1,7 @@
 .form {
     border-radius: 8px;
     margin-top: 40px;
+
     label {
         position: absolute;
         margin-top: -72px;
@@ -9,7 +10,8 @@
         -webkit-transition: 0.5s;
         -o-transition: 0.5s;
         transition: 0.5s;
-      }
+    }
+
     input[type="text"],
     input[type="date"],
     input[type="datetime"],
@@ -21,23 +23,25 @@
     input[type="number"],
     textarea,
     select {
-    background: $background_color_second;
-    border: none;
-    border-radius: 0.3em;
-    font-size: 1.2em;
-    outline: 0;
-    min-width: 0;
-    -webkit-box-flex: 1;
+        background: $background_color_second;
+        border: none;
+        border-radius: 0.3em;
+        font-size: 1.2em;
+        outline: 0;
+        min-width: 0;
+        margin-top: 20px;
+        -webkit-box-flex: 1;
         -ms-flex: 1;
-            flex: 1;
-    padding: 10px;
-    height: 52px;
-    -ms-flex-positive: 1;
+        flex: 1;
+        padding: 10px;
+        height: 52px;
+        -ms-flex-positive: 1;
         flex-grow: 1;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    color: #d3d3d3;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #d3d3d3;
     }
+
     input[type="text"]:focus,
     input[type="date"]:focus,
     input[type="datetime"]:focus,
@@ -49,22 +53,23 @@
     input[type="number"]:focus,
     textarea:focus,
     select:focus {
-  background: $background_color_second;
+        background: $background_color_second;
+    }
+
+    input[type="text"]:focus+label,
+    input[type="date"]:focus+label,
+    input[type="datetime"]:focus+label,
+    input[type="email"]:focus+label,
+    input[type="search"]:focus+label,
+    input[type="time"]:focus+label,
+    input[type="url"]:focus+label,
+    input[type="password"]:focus+label,
+    input[type="number"]:focus+label,
+    textarea:focus+label,
+    select:focus+label {
+        -webkit-transform: translateX(15px) scale(1.1);
+        -ms-transform: translateX(15px) scale(1.1);
+        transform: translateX(15px) scale(1.1);
+        color: #ee5b30;
+    }
 }
-input[type="text"]:focus + label,
-input[type="date"]:focus + label,
-input[type="datetime"]:focus + label,
-input[type="email"]:focus + label,
-input[type="search"]:focus + label,
-input[type="time"]:focus + label,
-input[type="url"]:focus + label,
-input[type="password"]:focus + label,
-input[type="number"]:focus + label,
-textarea:focus + label,
-select:focus + label {
-  -webkit-transform: translateX(15px) scale(1.1);
-      -ms-transform: translateX(15px) scale(1.1);
-          transform: translateX(15px) scale(1.1);
-  color: #ee5b30;
-}
-  }

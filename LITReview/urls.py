@@ -19,7 +19,8 @@ from django.contrib.auth import views as auth_views
 from .views import Index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("Accounts.urls")),
     path("", Index.as_view(), name="index"),
 ]

@@ -1,10 +1,10 @@
-.top_bar{
+.top_bar {
     background-color: $background_color_second;
     height: 50px;
     line-height: 50px;
 }
 
-body{
+body {
     font-family: 'Ubuntu', sans-serif;
     top: 0px;
     margin: 0;
@@ -12,12 +12,17 @@ body{
     color: $text_color;
 }
 
-h1{
-    margin:0;
+h1 {
+    margin: 0;
     text-align: center;
 }
 
-.row{
+.row {
     display: flex;
     gap: 5px;
+    margin: 5px 0 5px 0;
+}
+
+.center {
+    justify-content: center;
 }

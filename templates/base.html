@@ -13,8 +13,18 @@
 
     {% block addjs %}
     {% endblock addjs %}
-
-    {% block title %}
-    {% endblock title %}
-
 </head>
+
+<body>
+    <div class="top_bar">
+        <h1>LITReview</h1>
+        <a class="button" href="{% url 'signup' %}">Flux</a>
+        <a class="button" href="{% url 'signup' %}">Posts</a>
+        <a class="button" href="{% url 'signup' %}">Abonnements</a>
+        <a class="button" href="{% url 'logout' %}">Se déconnecter</a>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+</body>

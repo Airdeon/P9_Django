@@ -22,15 +22,22 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   gap: 5px;
+  margin: 5px 0 5px 0;
+}
+
+.center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .login_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   gap: 30px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -48,6 +55,35 @@ h1 {
   min-width: 300px;
 }
 
+.button {
+  position: relative;
+  display: inline-block;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1.2em;
+  background-color: #4b4b4b;
+  overflow: hidden;
+  line-height: 35px;
+  border-radius: 5px;
+  border: 1px solid #4b4b4b;
+  color: #d4d4d4;
+  -webkit-text-decoration: auto;
+          text-decoration: auto;
+  text-align: center;
+  fill: #d4d4d4;
+}
+
+.button:hover {
+  color: #ee5b30;
+  fill: #ee5b30;
+  border: 1px solid #ee5b30;
+  -webkit-box-shadow: 0 0 10px 0 #ee5b30;
+          box-shadow: 0 0 10px 0 #ee5b30;
+}
+
 .form {
   border-radius: 8px;
   margin-top: 40px;
@@ -59,6 +95,7 @@ h1 {
   margin-left: 5px;
   display: block;
   -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -79,6 +116,7 @@ h1 {
   font-size: 1.2em;
   outline: 0;
   min-width: 0;
+  margin-top: 20px;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -117,6 +155,7 @@ h1 {
 .form textarea:focus + label,
 .form select:focus + label {
   -webkit-transform: translateX(15px) scale(1.1);
+  -ms-transform: translateX(15px) scale(1.1);
   transform: translateX(15px) scale(1.1);
   color: #ee5b30;
 }
