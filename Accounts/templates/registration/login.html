@@ -23,15 +23,11 @@
         <div class="login_form">
             <h3>Connexion</h3>
 
-            <form class="form" method="post">
+            <form class="form form--multicolumn" method="post">
                 {% csrf_token %}
                 <div class="row">
-                    <div>
-                        {{ form.username }}{{ form.username.label_tag }}
-                    </div>
-                    <div>
-                        {{ form.password }}{{ form.password.label_tag }}
-                    </div>
+                    <div>{{ form.username }}{{ form.username.label_tag }}</div>
+                    <div>{{ form.password }}{{ form.password.label_tag }}</div>
                 </div>
                 <div class="row center">
                     <button class="button" type="submit">connexion</button>

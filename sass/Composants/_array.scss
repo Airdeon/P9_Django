@@ -1,0 +1,26 @@
+.table_style {
+    border-collapse: collapse;
+    min-width: 400px;
+    width: inherit;
+    border: 2px solid $background_color_second;
+
+    thead tr {
+        background-color: $background_color_second;
+
+        th {
+            text-align: left;
+            width: auto;
+            font-weight: bold;
+        }
+    }
+
+    th,
+    td {
+        padding: 1px 10px;
+        white-space: nowrap
+    }
+
+    tr:nth-child(even) {
+        background-color: $background_color_main;
+    }
+}

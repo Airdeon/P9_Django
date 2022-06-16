@@ -2,7 +2,37 @@
     background-color: $background_color_second;
     height: 50px;
     line-height: 50px;
+
+    h1 {
+        margin: 0;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        @media (max-width: 1000px) {
+            text-align: left;
+        }
+    }
+
+    .nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
+
+.content {
+    margin: 20px auto;
+    max-width: 800px;
+
+    .critique_nav {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 5px;
+    }
+}
+
+
 
 body {
     font-family: 'Ubuntu', sans-serif;
@@ -12,10 +42,7 @@ body {
     color: $text_color;
 }
 
-h1 {
-    margin: 0;
-    text-align: center;
-}
+
 
 .row {
     display: flex;
@@ -25,4 +52,8 @@ h1 {
 
 .center {
     justify-content: center;
+}
+
+.right {
+    justify-content: flex-end;
 }

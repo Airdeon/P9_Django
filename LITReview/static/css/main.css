@@ -4,17 +4,46 @@
   line-height: 50px;
 }
 
+.top_bar h1 {
+  margin: 0;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (max-width: 1000px) {
+  .top_bar h1 {
+    text-align: left;
+  }
+}
+
+.top_bar .nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.content {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.content .critique_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  gap: 5px;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
   top: 0px;
   margin: 0;
   background-color: #313131;
   color: #d4d4d4;
-}
-
-h1 {
-  margin: 0;
-  text-align: center;
 }
 
 .row {
@@ -29,6 +58,12 @@ h1 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .login_content {
@@ -84,12 +119,36 @@ h1 {
           box-shadow: 0 0 10px 0 #ee5b30;
 }
 
+.button--iconmenu {
+  font-size: 0.8em;
+  height: 50px;
+  fill: #d4d4d4;
+  border: none;
+  line-height: 50px;
+}
+
+.button--iconmenu:hover {
+  background-color: #ee5b30;
+  border: none;
+  fill: #d4d4d4;
+  color: #d4d4d4;
+}
+
 .form {
   border-radius: 8px;
   margin-top: 40px;
 }
 
 .form label {
+  position: absolute;
+  margin-left: 5px;
+  display: block;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.form--multicolumn label {
   position: absolute;
   margin-top: -72px;
   margin-left: 5px;
@@ -129,6 +188,14 @@ h1 {
   color: #d3d3d3;
 }
 
+.form input[type="file"] {
+  margin-top: 24px;
+}
+
+.form textarea {
+  height: 250px;
+}
+
 .form input[type="text"]:focus,
 .form input[type="date"]:focus,
 .form input[type="datetime"]:focus,
@@ -158,5 +225,32 @@ h1 {
   -ms-transform: translateX(15px) scale(1.1);
   transform: translateX(15px) scale(1.1);
   color: #ee5b30;
+}
+
+.table_style {
+  border-collapse: collapse;
+  min-width: 400px;
+  width: inherit;
+  border: 2px solid #4b4b4b;
+}
+
+.table_style thead tr {
+  background-color: #4b4b4b;
+}
+
+.table_style thead tr th {
+  text-align: left;
+  width: auto;
+  font-weight: bold;
+}
+
+.table_style th,
+.table_style td {
+  padding: 1px 10px;
+  white-space: nowrap;
+}
+
+.table_style tr:nth-child(even) {
+  background-color: #313131;
 }
 /*# sourceMappingURL=main.css.map */

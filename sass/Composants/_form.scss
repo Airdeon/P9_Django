@@ -4,12 +4,24 @@
 
     label {
         position: absolute;
-        margin-top: -72px;
         margin-left: 5px;
         display: block;
         -webkit-transition: 0.5s;
         -o-transition: 0.5s;
         transition: 0.5s;
+    }
+
+    &--multicolumn {
+
+        label {
+            position: absolute;
+            margin-top: -72px;
+            margin-left: 5px;
+            display: block;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
     }
 
     input[type="text"],
@@ -40,6 +52,16 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
         color: #d3d3d3;
+
+
+    }
+
+    input[type="file"] {
+        margin-top: 24px;
+    }
+
+    textarea {
+        height: 250px;
     }
 
     input[type="text"]:focus,
