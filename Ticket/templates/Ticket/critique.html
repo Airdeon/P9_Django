@@ -6,6 +6,9 @@
     <a class="button" href="{% url 'index' %}">Demander une critique</a>
     <a class="button" href="{% url 'posts' %}">Créer une critique</a>
 </div>
+{% for ticket in tickets %}
+{{ ticket }}
+{% endfor %}
 
 <div class="critique">
     <a class="button" href="{% url 'posts' %}">Créer une critique</a>

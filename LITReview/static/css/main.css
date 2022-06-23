@@ -3,20 +3,17 @@
   height: 50px;
   line-height: 50px;
 }
-
 .top_bar h1 {
   margin: 0;
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
 }
-
 @media (max-width: 1000px) {
   .top_bar h1 {
     text-align: left;
   }
 }
-
 .top_bar .nav {
   position: absolute;
   top: 0;
@@ -27,7 +24,6 @@
   margin: 20px auto;
   max-width: 800px;
 }
-
 .content .critique_nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -39,7 +35,7 @@
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   top: 0px;
   margin: 0;
   background-color: #313131;
@@ -96,12 +92,11 @@ body {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px 0 20px;
   font-size: 1.2em;
   background-color: #4b4b4b;
   overflow: hidden;
-  line-height: 35px;
+  line-height: 40px;
   border-radius: 5px;
   border: 1px solid #4b4b4b;
   color: #d4d4d4;
@@ -110,7 +105,6 @@ body {
   text-align: center;
   fill: #d4d4d4;
 }
-
 .button:hover {
   color: #ee5b30;
   fill: #ee5b30;
@@ -118,7 +112,6 @@ body {
   -webkit-box-shadow: 0 0 10px 0 #ee5b30;
           box-shadow: 0 0 10px 0 #ee5b30;
 }
-
 .button--iconmenu {
   font-size: 0.8em;
   height: 50px;
@@ -126,7 +119,6 @@ body {
   border: none;
   line-height: 50px;
 }
-
 .button--iconmenu:hover {
   background-color: #ee5b30;
   border: none;
@@ -136,9 +128,7 @@ body {
 
 .form {
   border-radius: 8px;
-  margin-top: 40px;
 }
-
 .form label {
   position: absolute;
   margin-left: 5px;
@@ -147,7 +137,6 @@ body {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-
 .form--multicolumn label {
   position: absolute;
   margin-top: -72px;
@@ -157,16 +146,15 @@ body {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-
-.form input[type="text"],
-.form input[type="date"],
-.form input[type="datetime"],
-.form input[type="email"],
-.form input[type="search"],
-.form input[type="time"],
-.form input[type="url"],
-.form input[type="password"],
-.form input[type="number"],
+.form input[type=text],
+.form input[type=date],
+.form input[type=datetime],
+.form input[type=email],
+.form input[type=search],
+.form input[type=time],
+.form input[type=url],
+.form input[type=password],
+.form input[type=number],
 .form textarea,
 .form select {
   background: #4b4b4b;
@@ -175,50 +163,46 @@ body {
   font-size: 1.2em;
   outline: 0;
   min-width: 0;
-  margin-top: 20px;
   -webkit-box-flex: 1;
+  margin-top: 20px;
   -ms-flex: 1;
   flex: 1;
   padding: 10px;
-  height: 52px;
+  height: 42px;
   -ms-flex-positive: 1;
   flex-grow: 1;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #d3d3d3;
 }
-
-.form input[type="file"] {
+.form input[type=file] {
   margin-top: 24px;
 }
-
 .form textarea {
   height: 250px;
 }
-
-.form input[type="text"]:focus,
-.form input[type="date"]:focus,
-.form input[type="datetime"]:focus,
-.form input[type="email"]:focus,
-.form input[type="search"]:focus,
-.form input[type="time"]:focus,
-.form input[type="url"]:focus,
-.form input[type="password"]:focus,
-.form input[type="number"]:focus,
+.form input[type=text]:focus,
+.form input[type=date]:focus,
+.form input[type=datetime]:focus,
+.form input[type=email]:focus,
+.form input[type=search]:focus,
+.form input[type=time]:focus,
+.form input[type=url]:focus,
+.form input[type=password]:focus,
+.form input[type=number]:focus,
 .form textarea:focus,
 .form select:focus {
   background: #4b4b4b;
 }
-
-.form input[type="text"]:focus + label,
-.form input[type="date"]:focus + label,
-.form input[type="datetime"]:focus + label,
-.form input[type="email"]:focus + label,
-.form input[type="search"]:focus + label,
-.form input[type="time"]:focus + label,
-.form input[type="url"]:focus + label,
-.form input[type="password"]:focus + label,
-.form input[type="number"]:focus + label,
+.form input[type=text]:focus + label,
+.form input[type=date]:focus + label,
+.form input[type=datetime]:focus + label,
+.form input[type=email]:focus + label,
+.form input[type=search]:focus + label,
+.form input[type=time]:focus + label,
+.form input[type=url]:focus + label,
+.form input[type=password]:focus + label,
+.form input[type=number]:focus + label,
 .form textarea:focus + label,
 .form select:focus + label {
   -webkit-transform: translateX(15px) scale(1.1);
@@ -230,27 +214,33 @@ body {
 .table_style {
   border-collapse: collapse;
   min-width: 400px;
-  width: inherit;
+  width: 100%;
   border: 2px solid #4b4b4b;
 }
-
 .table_style thead tr {
   background-color: #4b4b4b;
 }
-
 .table_style thead tr th {
   text-align: left;
   width: auto;
   font-weight: bold;
 }
-
 .table_style th,
 .table_style td {
   padding: 1px 10px;
   white-space: nowrap;
 }
-
-.table_style tr:nth-child(even) {
-  background-color: #313131;
+.table_style .full {
+  width: 100%;
 }
-/*# sourceMappingURL=main.css.map */
+.table_style .align_center {
+  text-align: center;
+  font-weight: bold;
+}
+.table_style .align_center a {
+  text-decoration: none;
+  color: #d4d4d4;
+}
+.table_style tr:nth-child(even) {
+  background-color: #2b2b2b;
+}/*# sourceMappingURL=main.css.map */

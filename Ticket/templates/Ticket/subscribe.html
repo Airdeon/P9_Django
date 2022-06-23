@@ -6,13 +6,16 @@
     <h2>Suivre d'autres utilisateur</h2>
 </div>
 
-<div>
-    <form class="form" method="post">
-        {% csrf_token %}
-        {{ form.followed_user }}
-        <input type="submit" value="Envoyer" class="button">
-    </form>
-</div>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    <div class="row">
+        {{ form.followed_user }}{{ form.followed_user.label_tag }}{{ form.error.followed_user }}
+    </div>
+    <div class="row center"><input type="submit" value="Envoyer" class="button"></div>
+
+</form>
+
 
 
 <div class="row center">
@@ -23,14 +26,17 @@
         <thead>
             <tr>
                 <th>Nom</th>
-                <th> </th>
+                <th>Désabonnement</th>
             </tr>
         </thead>
         <tbody>
             {% for user in followed_user %}
             <tr>
-                <td>
-                    {{ user.user }}
+                <td class="full">
+                    {{ user.followed_user }}
+                </td>
+                <td class="align_center">
+                    <a href="/Ticket/unsubscribe/{{ user.followed_user.id }}/">X</a>
                 </td>
             </tr>
             {% endfor %}
@@ -47,7 +53,6 @@
         <thead>
             <tr>
                 <th>Nom</th>
-                <th> </th>
             </tr>
         </thead>
         <tbody>

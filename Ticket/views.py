@@ -3,6 +3,8 @@ from django.views.generic import TemplateView, CreateView, FormView, RedirectVie
 from .models import Ticket, UserFollows
 from .forms import TicketForm, UserFollowForm
 from django.urls import reverse_lazy
+from django.db.models import Q
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -24,11 +26,29 @@ class PostView(LoginRequiredMixin, CreateView):
 class CritiqueView(LoginRequiredMixin, TemplateView):
     template_name = "Ticket/critique.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        follow = UserFollows.objects.filter(user=self.request.user)
+        user = []
+        for user_follow in follow:
+            user.append(user_follow.followed_user)
+        context["tickets"] = Ticket.objects.filter(Q(user=self.request.user) | Q(user__in=user))
+        print(context)
+        return context
+
 
 class SubscribeView(LoginRequiredMixin, CreateView):
     template_name = "Ticket/subscribe.html"
     model = UserFollows
     form_class = UserFollowForm
+
+    def get_form_kwargs(self):
+        """Passes the request object to the form class.
+        This is necessary to only display members that belong to a given user"""
+
+        kwargs = super(SubscribeView, self).get_form_kwargs()
+        kwargs["request"] = self.request
+        return kwargs
 
     def get_success_url(self, *args, **kwargs):
         return reverse_lazy("subscribe")
@@ -52,6 +72,7 @@ class UnsubscribeRedirectView(LoginRequiredMixin, RedirectView):
     url = "/Ticket/subscribe/"
 
     def get_redirect_url(self, *args, **kwargs):
-        id = self.kwarg.get("pk")
+        id = self.kwargs.get("pk")
+        UserFollows.objects.get(followed_user_id=id, user=self.request.user).delete()
 
         return super().get_redirect_url(*args, **kwargs)

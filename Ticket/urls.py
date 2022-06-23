@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from .views import PostView, SubscribeView, CritiqueView
+from .views import PostView, SubscribeView, CritiqueView, UnsubscribeRedirectView
 
 urlpatterns = [
     path("posts/", PostView.as_view(), name="posts"),
     path("critique/", CritiqueView.as_view(), name="critique"),
     path("subscribe/", SubscribeView.as_view(), name="subscribe"),
+    path("unsubscribe/<str:pk>/", UnsubscribeRedirectView.as_view(), name="unsubscribe"),
 ]
