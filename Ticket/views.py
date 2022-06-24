@@ -23,6 +23,21 @@ class PostView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class PostView(LoginRequiredMixin, CreateView):
+    template_name = "Ticket/post.html"
+    model = Ticket
+    form_class = TicketForm
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy("index")
+
+    def form_valid(self, form):
+        form.save(commit=False)
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+
 class CritiqueView(LoginRequiredMixin, TemplateView):
     template_name = "Ticket/critique.html"
 

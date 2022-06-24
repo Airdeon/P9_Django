@@ -126,6 +126,11 @@ body {
   color: #d4d4d4;
 }
 
+h1 a {
+  color: #d4d4d4;
+  text-decoration: none;
+}
+
 .form {
   border-radius: 8px;
 }
@@ -243,4 +248,27 @@ body {
 }
 .table_style tr:nth-child(even) {
   background-color: #2b2b2b;
+}
+
+.bloc_ticket {
+  border: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+  padding-bottom: 50px;
+}
+
+.bloc_ticket_title p {
+  margin: 0;
+}
+
+.datetime {
+  float: right;
+}
+
+.critique_button {
+  float: right;
+}
+
+.image {
+  max-width: 300px;
 }/*# sourceMappingURL=main.css.map */

@@ -7,7 +7,27 @@
     <a class="button" href="{% url 'posts' %}">Créer une critique</a>
 </div>
 
-<div class="post">
-    <a class="button" href="{% url 'posts' %}">Créer une critique</a>
+{% for ticket in tickets %}
+
+<div class="bloc_ticket">
+    <div class="bloc_ticket_title">
+        <p class="datetime">{{ ticket.time_created }}</p>
+        <p>{{ ticket.user }} a demandé une critique</p>
+    </div>
+    <div>
+        <p>{{ ticket.title }}</p>
+    </div>
+    <div>
+        <p>{{ ticket.description }}</p>
+    </div>
+    <div>
+        <img class="image" src="/media/{{ ticket.image }}" alt="image"></img>
+    </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' %}">Créer une critique</a>
+    </div>
 </div>
+{% endfor %}
+
+
 {% endblock content %}

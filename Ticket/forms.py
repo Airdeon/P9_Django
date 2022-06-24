@@ -12,6 +12,12 @@ class TicketForm(forms.ModelForm):
         }
 
 
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ["headline", "body"]
+
+
 class UserFollowForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
