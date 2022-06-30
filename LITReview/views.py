@@ -14,6 +14,7 @@ class Index(LoginRequiredMixin, TemplateView):
         user = []
         for user_follow in follow:
             user.append(user_follow.followed_user)
+
         context["tickets"] = Ticket.objects.filter(Q(user=self.request.user) | Q(user__in=user))
         context["reviews"] = Review.objects.filter(Q(ticket__in=context["tickets"]) | Q(user__in=user) | Q(user=self.request.user))
         context["user"] = self.request.user
