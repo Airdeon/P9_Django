@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from Ticket.models import Ticket, UserFollows
+from Ticket.models import Ticket, Review
+from Accounts.models import UserFollows
 from django.db.models import Q
 
 
@@ -14,5 +15,7 @@ class Index(LoginRequiredMixin, TemplateView):
         for user_follow in follow:
             user.append(user_follow.followed_user)
         context["tickets"] = Ticket.objects.filter(Q(user=self.request.user) | Q(user__in=user))
-        print(context)
+        context["reviews"] = Review.objects.filter(Q(ticket__in=context["tickets"]) | Q(user__in=user) | Q(user=self.request.user))
+        context["user"] = self.request.user
+
         return context

@@ -93,4 +93,14 @@
         transform: translateX(15px) scale(1.1);
         color: #ee5b30;
     }
+
+    #id_rating {
+        height: 25px;
+        display: flex;
+        margin-top: 25px;
+
+        div {
+            width: 50px;
+        }
+    }
 }

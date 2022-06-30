@@ -8,24 +8,44 @@
 </div>
 
 {% for ticket in tickets %}
+{% for review in ticket.review_set.all %}
+{% if review.ticket == ticket %}
+<div class="bloc_border">
+    {% if user == review.user %}
+    <p class="datetime">{{ review.time_created }}</p>
+    <h4>Vous avez publier une critique</h4>
+    {% else %}
+    <h4>{{ review.user }} a publier une critique</h4>
+    {% endif %}
+    <h4>{{ review.headline }} - {{ review.rating }}</h4>
+    <p>{{ review.body }}</p>
+    {% endif %}
+    {% endfor %}
 
-<div class="bloc_ticket">
-    <div class="bloc_ticket_title">
-        <p class="datetime">{{ ticket.time_created }}</p>
-        <p>{{ ticket.user }} a demandé une critique</p>
+
+    <div class="bloc_border">
+        <div class="bloc_ticket_title">
+            <p class="datetime">{{ ticket.time_created }}</p>
+            <p>{{ ticket.user }} a demandé une critique</p>
+        </div>
+        <div>
+            <p>{{ ticket.title }}</p>
+        </div>
+        <div>
+            <p>{{ ticket.description }}</p>
+        </div>
+        <div>
+            <img class="image" src="/media/{{ ticket.image }}" alt="image"></img>
+        </div>
+        {% for review in reviews %}
+        {% if review.ticket == ticket %}
     </div>
-    <div>
-        <p>{{ ticket.title }}</p>
-    </div>
-    <div>
-        <p>{{ ticket.description }}</p>
-    </div>
-    <div>
-        <img class="image" src="/media/{{ ticket.image }}" alt="image"></img>
-    </div>
+    {% else %}
     <div class="critique_button">
-        <a class="button" href="{% url 'critique' %}">Créer une critique</a>
+        <a class="button" href="{% url 'critique' pk=ticket.id %}">Créer une critique</a>
     </div>
+    {% endif %}
+    {% endfor %}
 </div>
 {% endfor %}
 
