@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row center">
+    <h2>Créer un ticket</h2>
+</div>
+<div>
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="bloc_border">
+            <div class="row">
+                {{ form.title }}{{ form.title.label_tag }}
+            </div>
+            <div class="row">
+                {{ form.description }}{{ form.description.label_tag }}
+            </div>
+            <div class="row">
+                {{ form.image }}{{ form.image.label_tag }}
+            </div>
+            <div class="row right">
+            </div>
+        </div>
+        <div class="bloc_border">
+            <div class="row">
+                {{ review_form.headline }}{{ review_form.headline.label_tag }}
+            </div>
+            <div class="row">
+                {{ review_form.rating.label_tag }}{{ review_form.rating }}
+            </div>
+            <div class="row">
+                {{ review_form.body }}{{ review_form.body.label_tag }}
+            </div>
+            <div class="row right">
+                <input type="submit" value="Envoyer" class="button">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
