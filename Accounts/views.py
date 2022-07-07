@@ -13,7 +13,7 @@ class SignUpView(CreateView):
 
 
 class SubscribeView(LoginRequiredMixin, CreateView):
-    template_name = "Ticket/subscribe.html"
+    template_name = "Accounts/subscribe.html"
     model = UserFollows
     form_class = UserFollowForm
 
@@ -44,7 +44,7 @@ class SubscribeView(LoginRequiredMixin, CreateView):
 
 
 class UnsubscribeRedirectView(LoginRequiredMixin, RedirectView):
-    url = "/Ticket/subscribe/"
+    url = "/Accounts/subscribe/"
 
     def get_redirect_url(self, *args, **kwargs):
         id = self.kwargs.get("pk")

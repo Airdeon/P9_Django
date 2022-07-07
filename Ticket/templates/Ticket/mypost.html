@@ -2,10 +2,6 @@
 {% load static %}
 
 {% block content %}
-<div class="critique_nav">
-    <a class="button" href="{% url 'posts' %}">Demander une critique</a>
-    <a class="button" href="{% url 'post_review' %}">Créer une critique</a>
-</div>
 
 {% for ticket in tickets %}
 
@@ -34,7 +30,36 @@
             <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
         </div>
     </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' pk=ticket.0.id %}">Modifier</a>
+    </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' pk=ticket.0.id %}">Suprimer</a>
+    </div>
 </div>
+{% if user == ticket.1.user %}
+<div class="bloc_border">
+    <div class="bloc_ticket_title">
+        <p class="datetime">{{ ticket.1.time_created }}</p>
+        <p>{{ ticket.1.user }} a demandé une critique</p>
+    </div>
+    <div>
+        <p>{{ ticket.1.title }}</p>
+    </div>
+    <div>
+        <p>{{ ticket.1.description }}</p>
+    </div>
+    <div>
+        <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
+    </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Modifier</a>
+    </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Suprimer</a>
+    </div>
+</div>
+{% endif %}
 {% else %}
 <div class="bloc_border">
     <div class="bloc_ticket_title">
@@ -51,7 +76,10 @@
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>
     <div class="critique_button">
-        <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Créer une critique</a>
+        <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Modifier</a>
+    </div>
+    <div class="critique_button">
+        <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Suprimer</a>
     </div>
 </div>
 {% endif %}

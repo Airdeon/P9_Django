@@ -21,8 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/", include("Accounts.urls")),
+    path("Accounts/", include("django.contrib.auth.urls")),
+    path("Accounts/", include("Accounts.urls")),
     path("Ticket/", include("Ticket.urls")),
     path("", Index.as_view(), name="index"),
 ]

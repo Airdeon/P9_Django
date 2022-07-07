@@ -6,6 +6,7 @@ from .forms import TicketForm, ReviewForm, PostReviewForm
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib.auth.models import User
+from operator import itemgetter
 
 
 # Create your views here.
@@ -69,3 +70,32 @@ class PostReviewView(LoginRequiredMixin, FormView):
         review.save()
 
         return super().form_valid(form)
+
+
+class MyPostView(LoginRequiredMixin, TemplateView):
+    template_name = "Ticket/mypost.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        reviews = Review.objects.filter(user=self.request.user)
+        review_id = []
+        for review in reviews:
+            review_id.append(review.id)
+        tickets = Ticket.objects.filter(Q(user=self.request.user) | Q(id__in=review_id))
+        print(tickets)
+
+        tickets_list = []
+        for ticket in tickets:
+            reviewed_ticket = []
+            for review in reviews:
+                if review.ticket == ticket:
+                    reviewed_ticket = [review, ticket, review.time_created]
+                    break
+                else:
+                    reviewed_ticket = [0, ticket, ticket.time_created]
+            tickets_list.append(reviewed_ticket)
+        context["user"] = self.request.user
+        context["tickets"] = sorted(tickets_list, key=itemgetter(2), reverse=True)
+
+        return context
