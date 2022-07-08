@@ -26,9 +26,11 @@
         <div>
             <p>{{ ticket.1.description }}</p>
         </div>
-        <div>
-            <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
-        </div>
+        {% if ticket.1.image.url %}
+    <div>
+        <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
+    </div>
+    {% endif %}
     </div>
     <div class="edit_button">
         <a class="button" href="{% url 'update_review' pk=ticket.0.id %}">Modifier</a>
@@ -47,7 +49,7 @@
     <div>
         <p>{{ ticket.1.description }}</p>
     </div>
-    {% ticket.image.url %}
+    {% if ticket.1.image.url %}
     <div>
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>
@@ -70,9 +72,11 @@
     <div>
         <p>{{ ticket.1.description }}</p>
     </div>
+    {% if ticket.1.image.url %}
     <div>
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>
+    {% endif %}
     <div class="edit_button">
         <a class="button" href="{% url 'update_ticket' pk=ticket.1.id %}">Modifier</a>
         <a class="button" href="{% url 'delete_ticket' pk=ticket.1.id %}">Suprimer</a>
