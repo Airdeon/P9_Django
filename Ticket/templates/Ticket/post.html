@@ -14,11 +14,20 @@
         <div class="row">
             {{ form.description }}{{ form.description.label_tag }}
         </div>
+        {% if submit_text != "Modifier" %}
         <div class="row">
             {{ form.image }}{{ form.image.label_tag }}
         </div>
+        {% else %}
+        <div class="row">
+            <img class="image" src="{{ ticket.image.url }}" alt="image"></img>
+        </div>
+        <div class="row modify">
+            {{ form.image }}{{ form.image.label_tag }}
+        </div>
+        {% endif %}
         <div class="row right">
-            <input type="submit" value="Envoyer" class="button">
+            <input type="submit" value="{{ submit_text }}" class="button">
         </div>
     </form>
 </div>

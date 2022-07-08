@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row center">
+    <h2>Supression d'un ticket</h2>
+</div>
+<div>
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Etes vous sur de vouloir suprimer le ticket suivant (ainsi que sa critique si celle ci existe) ?</p>
+        <p>Titre : {{ ticket.title }}</p>
+        <div class="row right">
+            <input type="submit" value="{{ submit_text }}" class="button">
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -15,11 +15,27 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import PostView, CritiqueView, PostReviewView, MyPostView
+from .views import (
+    PostView,
+    CritiqueView,
+    PostReviewView,
+    MyPostView,
+    TicketDeleteView,
+    ReviewDeleteView,
+    TicketUpdateView,
+    ReviewUpdateView,
+)
 
 urlpatterns = [
-    path("posts/", PostView.as_view(), name="posts"),
     path("myposts/", MyPostView.as_view(), name="myposts"),
+    # Ticket
+    path("posts/", PostView.as_view(), name="posts"),
+    path("update_ticket/<str:pk>/", TicketUpdateView.as_view(), name="update_ticket"),
+    path("delete_ticket/<str:pk>/", TicketDeleteView.as_view(), name="delete_ticket"),
+    # Review
     path("critique/<str:pk>/", CritiqueView.as_view(), name="critique"),
+    path("update_review/<str:pk>/", ReviewUpdateView.as_view(), name="update_review"),
+    path("delete_review/<str:pk>/", ReviewDeleteView.as_view(), name="delete_review"),
+    # ticket and review
     path("post_review/", PostReviewView.as_view(), name="post_review"),
 ]

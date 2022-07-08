@@ -1,6 +1,6 @@
 from urllib import request
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, CreateView, FormView, RedirectView
+from django.views.generic import TemplateView, CreateView, FormView, RedirectView, DeleteView, UpdateView
 from .models import Review, Ticket
 from .forms import TicketForm, ReviewForm, PostReviewForm
 from django.urls import reverse_lazy
@@ -24,6 +24,11 @@ class PostView(LoginRequiredMixin, CreateView):
         form.save()
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["submit_text"] = "Créer"
+        return context
+
 
 class CritiqueView(LoginRequiredMixin, CreateView):
     template_name = "Ticket/critique.html"
@@ -43,6 +48,7 @@ class CritiqueView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["ticket"] = Ticket.objects.get(id=self.kwargs.get("pk"))
+        context["submit_text"] = "Créer"
         return context
 
 
@@ -58,6 +64,7 @@ class PostReviewView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         print(form.cleaned_data)
+        form.instance.user = self.request.user
         form.save()
         review = Review(
             ticket=Ticket.objects.latest("id"),
@@ -95,7 +102,63 @@ class MyPostView(LoginRequiredMixin, TemplateView):
                 else:
                     reviewed_ticket = [0, ticket, ticket.time_created]
             tickets_list.append(reviewed_ticket)
+        for review in reviews:
+            if review.user == self.request.user:
+                reviewed_ticket = [review, review.ticket, review.time_created]
+                if reviewed_ticket not in tickets_list:
+                    tickets_list.append(reviewed_ticket)
+        print(tickets_list)
         context["user"] = self.request.user
         context["tickets"] = sorted(tickets_list, key=itemgetter(2), reverse=True)
 
+        return context
+
+
+class TicketUpdateView(LoginRequiredMixin, UpdateView):
+    model = Ticket
+    template_name = "Ticket/post.html"
+    form_class = TicketForm
+    success_url = reverse_lazy("myposts")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ticket"] = self.object
+        context["submit_text"] = "Modifier"
+        return context
+
+
+class ReviewUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = "Ticket/critique.html"
+    model = Review
+    form_class = ReviewForm
+    success_url = reverse_lazy("myposts")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ticket"] = self.object.ticket
+        context["submit_text"] = "Modifier"
+        return context
+
+
+class TicketDeleteView(LoginRequiredMixin, DeleteView):
+    model = Ticket
+    template_name = "Ticket/delete_ticket.html"
+    context_object_name = "ticket"
+    success_url = reverse_lazy("myposts")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["submit_text"] = "Supprimer"
+        return context
+
+
+class ReviewDeleteView(LoginRequiredMixin, DeleteView):
+    model = Review
+    template_name = "Ticket/delete_review.html"
+    context_object_name = "review"
+    success_url = reverse_lazy("myposts")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["submit_text"] = "Supprimer"
         return context

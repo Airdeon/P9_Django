@@ -131,6 +131,11 @@ h1 a {
   text-decoration: none;
 }
 
+.edit_button {
+  gap: 5px;
+  float: right;
+}
+
 .form {
   border-radius: 8px;
 }
@@ -224,6 +229,10 @@ h1 a {
 }
 .form #id_rating div {
   width: 50px;
+}
+
+.modify label {
+  position: relative;
 }
 
 .table_style {
