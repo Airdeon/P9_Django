@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="row center">
-    <h2>Créer un ticket</h2>
+    <h2>{{ title }}</h2>
 </div>
 <div>
     <form class="form" method="post" enctype="multipart/form-data">
@@ -19,9 +19,11 @@
             {{ form.image }}{{ form.image.label_tag }}
         </div>
         {% else %}
-        <div class="row">
+        {% if ticket.image %}
+        <div>
             <img class="image" src="{{ ticket.image.url }}" alt="image"></img>
         </div>
+        {% endif %}
         <div class="row modify">
             {{ form.image }}{{ form.image.label_tag }}
         </div>

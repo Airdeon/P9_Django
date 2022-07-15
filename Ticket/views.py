@@ -49,6 +49,7 @@ class CritiqueView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["ticket"] = Ticket.objects.get(id=self.kwargs.get("pk"))
+        context["title"] = "Créer une critique"
         context["submit_text"] = "Créer"
         return context
 
@@ -63,6 +64,7 @@ class PostReviewView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["review_form"] = ReviewForm
+        context["title"] = "Créer un ticket et sa critique"
         return context
 
     def form_valid(self, form):
@@ -129,6 +131,7 @@ class TicketUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["ticket"] = self.object
         context["submit_text"] = "Modifier"
+        context["title"] = "Modifier un ticket"
         return context
 
 
@@ -144,6 +147,7 @@ class ReviewUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["ticket"] = self.object.ticket
         context["submit_text"] = "Modifier"
+        context["title"] = "Modifier une critique"
         return context
 
 
