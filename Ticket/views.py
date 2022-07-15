@@ -66,7 +66,6 @@ class PostReviewView(LoginRequiredMixin, FormView):
         return context
 
     def form_valid(self, form):
-        print(form.cleaned_data)
         form.instance.user = self.request.user
         form.save()
         review = Review(

@@ -27,11 +27,12 @@ source env/bin/activate
 
 Installer les dépendances :
 ```
-pip install -r requirements.txt
+pip install -r Sources/requirements.txt
 ```
 ### Lancement
-démaré ensuite le site en utilisant la commande suivante :
+démaré ensuite le site en utilisant les commandes suivantes :
 ```
+cd Sources/
 python manage.py runserver
 ```
 vous pouvez ensuite ouvrir le lien suivant depuis votre navigateur :

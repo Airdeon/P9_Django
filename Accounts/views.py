@@ -39,7 +39,6 @@ class SubscribeView(LoginRequiredMixin, CreateView):
         context["followed_user"] = self.model.objects.filter(user=self.request.user)
 
         context["follow_me"] = self.model.objects.filter(followed_user=self.request.user)
-        print(context)
         return context
 
 

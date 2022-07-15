@@ -37,7 +37,6 @@ class Index(LoginRequiredMixin, TemplateView):
             reviewed_ticket = [review, review.ticket, review.time_created]
             if reviewed_ticket not in tickets_list:
                 tickets_list.append(reviewed_ticket)
-        print(tickets_list)
         context["user"] = self.request.user
         context["tickets"] = sorted(tickets_list, key=itemgetter(2), reverse=True)
 
