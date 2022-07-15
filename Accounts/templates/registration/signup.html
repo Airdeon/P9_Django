@@ -21,20 +21,14 @@
 
             <form class="form" method="post">
                 {% csrf_token %}
-                <div class="row center">
-                    <div>
-                        {{ form.username }}{{ form.username.label_tag }}
-                    </div>
+                <div class="row">
+                    {{ form.username }}{{ form.username.label_tag }}
                 </div>
-                <div class="row center">
-                    <div>
-                        {{ form.password1 }}{{ form.password1.label_tag }}
-                    </div>
+                <div class="row">
+                    {{ form.password1 }}{{ form.password1.label_tag }}
                 </div>
-                <div class="row center">
-                    <div>
-                        {{ form.password2 }}{{ form.password2.label_tag }}
-                    </div>
+                <div class="row">
+                    {{ form.password2 }}{{ form.password2.label_tag }}
                 </div>
                 <div class="row center">
                     <a class="button" href="{% url 'login' %}">Connection</a>

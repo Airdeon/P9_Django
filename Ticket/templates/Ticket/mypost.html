@@ -5,6 +5,7 @@
 
 {% for ticket in tickets %}
 
+<!-- Bloc Critique plus ticket -->
 {% if ticket.0 != 0 %}
 <div class="bloc_border">
     <p class="datetime">{{ ticket.0.time_created }}</p>
@@ -13,7 +14,39 @@
     {% else %}
     <h4>{{ ticket.0.user }} a publier une critique</h4>
     {% endif %}
-    <h4>{{ ticket.0.headline }} - {{ ticket.0.rating }}</h4>
+    <h4>{{ ticket.0.headline }} -
+        {% if ticket.0.rating == 1 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 2 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 3 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 4 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 5 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        {% endif %}
+    </h4>
     <p>{{ ticket.0.body }}</p>
     <div class="bloc_border">
         <div class="bloc_ticket_title">
@@ -26,11 +59,11 @@
         <div>
             <p>{{ ticket.1.description }}</p>
         </div>
-        {% if ticket.1.image.url %}
-    <div>
-        <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
-    </div>
-    {% endif %}
+        {% if ticket.1.image %}
+        <div>
+            <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
+        </div>
+        {% endif %}
     </div>
     <div class="edit_button">
         <a class="button" href="{% url 'update_review' pk=ticket.0.id %}">Modifier</a>
@@ -49,7 +82,7 @@
     <div>
         <p>{{ ticket.1.description }}</p>
     </div>
-    {% if ticket.1.image.url %}
+    {% if ticket.1.image %}
     <div>
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>
@@ -60,6 +93,8 @@
     </div>
 </div>
 {% endif %}
+
+<!-- Bloc ticket seul -->
 {% else %}
 <div class="bloc_border">
     <div class="bloc_ticket_title">
@@ -72,7 +107,7 @@
     <div>
         <p>{{ ticket.1.description }}</p>
     </div>
-    {% if ticket.1.image.url %}
+    {% if ticket.1.image %}
     <div>
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>

@@ -17,7 +17,39 @@
     {% else %}
     <h4>{{ ticket.0.user }} a publier une critique</h4>
     {% endif %}
-    <h4>{{ ticket.0.headline }} - {{ ticket.0.rating }}</h4>
+    <h4>{{ ticket.0.headline }} -
+        {% if ticket.0.rating == 1 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 2 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 3 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 4 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileN.png" alt="image"></img>
+        {% elif ticket.0.rating == 5 %}
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        <img class="etoile" src="/media/etoileJ.png" alt="image"></img>
+        {% endif %}
+    </h4>
     <p>{{ ticket.0.body }}</p>
     <div class="bloc_border">
         <div class="bloc_ticket_title">
@@ -30,9 +62,11 @@
         <div>
             <p>{{ ticket.1.description }}</p>
         </div>
+        {% if ticket.1.image %}
         <div>
             <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
         </div>
+        {% endif %}
     </div>
 </div>
 {% else %}
@@ -47,9 +81,11 @@
     <div>
         <p>{{ ticket.1.description }}</p>
     </div>
+    {% if ticket.1.image %}
     <div>
         <img class="image" src="{{ ticket.1.image.url }}" alt="image"></img>
     </div>
+    {% endif %}
     <div class="critique_button">
         <a class="button" href="{% url 'critique' pk=ticket.1.id %}">Créer une critique</a>
     </div>

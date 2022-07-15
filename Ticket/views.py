@@ -1,16 +1,15 @@
-from urllib import request
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, CreateView, FormView, RedirectView, DeleteView, UpdateView
+from django.views.generic import TemplateView, CreateView, FormView, DeleteView, UpdateView
 from .models import Review, Ticket
 from .forms import TicketForm, ReviewForm, PostReviewForm
 from django.urls import reverse_lazy
 from django.db.models import Q
-from django.contrib.auth.models import User
 from operator import itemgetter
 
 
-# Create your views here.
 class PostView(LoginRequiredMixin, CreateView):
+    """creation of ticket"""
+
     template_name = "Ticket/post.html"
     model = Ticket
     form_class = TicketForm
@@ -31,6 +30,8 @@ class PostView(LoginRequiredMixin, CreateView):
 
 
 class CritiqueView(LoginRequiredMixin, CreateView):
+    """creation of review"""
+
     template_name = "Ticket/critique.html"
     model = Review
     form_class = ReviewForm
@@ -53,6 +54,8 @@ class CritiqueView(LoginRequiredMixin, CreateView):
 
 
 class PostReviewView(LoginRequiredMixin, FormView):
+    """creation of ticket and review in same time"""
+
     template_name = "Ticket/post_review.html"
     form_class = PostReviewForm
     success_url = "/"
@@ -80,6 +83,8 @@ class PostReviewView(LoginRequiredMixin, FormView):
 
 
 class MyPostView(LoginRequiredMixin, TemplateView):
+    """display of personal ticket and review"""
+
     template_name = "Ticket/mypost.html"
 
     def get_context_data(self, **kwargs):
@@ -90,8 +95,6 @@ class MyPostView(LoginRequiredMixin, TemplateView):
         for review in reviews:
             review_id.append(review.id)
         tickets = Ticket.objects.filter(Q(user=self.request.user) | Q(id__in=review_id))
-        print(tickets)
-
         tickets_list = []
         for ticket in tickets:
             reviewed_ticket = []
@@ -101,13 +104,14 @@ class MyPostView(LoginRequiredMixin, TemplateView):
                     break
                 else:
                     reviewed_ticket = [0, ticket, ticket.time_created]
+            if len(reviews) == 0:
+                reviewed_ticket = [0, ticket, ticket.time_created]
             tickets_list.append(reviewed_ticket)
         for review in reviews:
             if review.user == self.request.user:
                 reviewed_ticket = [review, review.ticket, review.time_created]
                 if reviewed_ticket not in tickets_list:
                     tickets_list.append(reviewed_ticket)
-        print(tickets_list)
         context["user"] = self.request.user
         context["tickets"] = sorted(tickets_list, key=itemgetter(2), reverse=True)
 
@@ -115,6 +119,8 @@ class MyPostView(LoginRequiredMixin, TemplateView):
 
 
 class TicketUpdateView(LoginRequiredMixin, UpdateView):
+    """Update your ticket"""
+
     model = Ticket
     template_name = "Ticket/post.html"
     form_class = TicketForm
@@ -128,6 +134,8 @@ class TicketUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class ReviewUpdateView(LoginRequiredMixin, UpdateView):
+    """Update your review"""
+
     template_name = "Ticket/critique.html"
     model = Review
     form_class = ReviewForm
@@ -141,6 +149,8 @@ class ReviewUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class TicketDeleteView(LoginRequiredMixin, DeleteView):
+    """delete your ticket"""
+
     model = Ticket
     template_name = "Ticket/delete_ticket.html"
     context_object_name = "ticket"
@@ -153,6 +163,8 @@ class TicketDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class ReviewDeleteView(LoginRequiredMixin, DeleteView):
+    """Delete your review"""
+
     model = Review
     template_name = "Ticket/delete_review.html"
     context_object_name = "review"

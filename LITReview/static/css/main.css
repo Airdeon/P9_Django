@@ -62,6 +62,10 @@ body {
           justify-content: flex-end;
 }
 
+.etoile {
+  width: 20px;
+}
+
 .login_content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -149,7 +153,7 @@ h1 a {
 }
 .form--multicolumn label {
   position: absolute;
-  margin-top: -72px;
+  margin-top: -62px;
   margin-left: 5px;
   display: block;
   -webkit-transition: 0.5s;

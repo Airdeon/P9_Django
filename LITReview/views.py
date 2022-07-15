@@ -7,6 +7,8 @@ from django.db.models import Q
 
 
 class Index(LoginRequiredMixin, TemplateView):
+    """Flux, main page"""
+
     template_name = "LITReview/index.html"
 
     def get_context_data(self, **kwargs):
@@ -28,11 +30,14 @@ class Index(LoginRequiredMixin, TemplateView):
                     break
                 else:
                     reviewed_ticket = [0, ticket, ticket.time_created]
+            if len(reviews) == 0:
+                reviewed_ticket = [0, ticket, ticket.time_created]
             tickets_list.append(reviewed_ticket)
         for review in reviews:
             reviewed_ticket = [review, review.ticket, review.time_created]
             if reviewed_ticket not in tickets_list:
                 tickets_list.append(reviewed_ticket)
+        print(tickets_list)
         context["user"] = self.request.user
         context["tickets"] = sorted(tickets_list, key=itemgetter(2), reverse=True)
 
