@@ -235,8 +235,12 @@ h1 a {
   width: 50px;
 }
 
-.modify label {
-  position: relative;
+.modify label,
+.modify a {
+  display: none;
+}
+.modify input[type=checkbox] {
+  display: none;
 }
 
 .table_style {
