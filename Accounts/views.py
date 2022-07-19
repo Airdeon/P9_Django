@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import UserFollows
 from .forms import UserFollowForm
 
+
 # Create your views here.
 class SignUpView(CreateView):
     form_class = UserCreationForm
