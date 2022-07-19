@@ -29,6 +29,10 @@
                     <div>{{ form.username }}{{ form.username.label_tag }}</div>
                     <div>{{ form.password }}{{ form.password.label_tag }}</div>
                 </div>
+                {% if form.errors %}
+                <div class="row center">* Veuillez entrer un utilisateur et un mot de passe valide.</div>
+                {% endif %}
+
                 <div class="row center">
                     <button class="button" type="submit">connexion</button>
                 </div>
